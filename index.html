@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Boo!</title>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="form">
+      <form action="#" id="myForm">
+
+        <h3>
+          Your name? <br><br>
+        </h3>
+        <input type="text" name="firstname" id="input-form">
+        <br><br>
+        <input type="submit" value="Submit" id="submit-button">
+        <input type="hidden" name="value" value="99">
+      </form>
+    </div>
+  </div>
+
+</body>
+
+<script>
+
+  document.getElementById('submit-button').addEventListener('click', (e) => {
+    var myHeaders = new Headers({
+      'X-AIO-Key': '11c65731ff6d4340a3a437b30d26cda6'
+    });
+
+    fetch('http://io.adafruit.com/api/v2/dounan/feeds/iot.pumpkin/data', {
+      method: 'POST',
+      mode: "cors",
+      headers: myHeaders,
+      body: new FormData(document.getElementById('myForm'))
+
+    });
+
+
+    e.preventDefault();
+  })
+
+
+</script>
+
+</html>
